@@ -9,12 +9,16 @@ import AddingForm from './components/AddingForm';
 function App() {
   return (
     <div className="App">
-       <LoginButton />
-      <img src={logo} alt="varialogo"></img>
+      <div className='login'>
+        <LoginButton />
+      </div>
+      <img src={logo} alt="varialogo" className='logo'></img>
       <h1>LAITEKANTA</h1>
-      <Searching />
-      <AddButton />
-      <ArchiveButton />
+      <div className='inputs'>
+        <Searching />
+        <AddButton />
+        <ArchiveButton />
+      </div>
 
 
     </div>
