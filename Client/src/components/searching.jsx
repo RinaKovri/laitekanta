@@ -1,12 +1,15 @@
-import React from 'react'
-
-
-
-const Searching = () => {
+const Searching = ({
+  filterText,
+  filterTextChange
+}) => {
   return (
-    <div>
-      <input></input>Hae laitetta
-    </div>
+    <form className='form'>
+      <input 
+      type='text'
+      value={filterText} 
+      placeholder='Hae laitetta' 
+      onChange={(e) => filterTextChange(e.target.value)}/>
+    </form>
   )
 }
 

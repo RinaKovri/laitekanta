@@ -15,7 +15,6 @@ function App() {
       <Searching />
       <AddButton />
       <ArchiveButton />
-      <AddingForm />
 
 
     </div>
