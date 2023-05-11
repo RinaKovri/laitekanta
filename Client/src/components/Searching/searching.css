@@ -1,0 +1,16 @@
+
+.search {
+    text-align: center;
+    border-radius: 10px;
+    height: 35px;
+    width: 310px;
+}
+
+.search::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 140, 0);
+    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="rgb(255, 140, 0)" d="M501.4 482.6L367.4 348.6c29.3-35.2 47-80.3 47-129.3 0-114.9-93.1-208-208-208s-208 93.1-208 208 93.1 208 208 208c49 0 94.1-17.7 129.3-47l133.9 134c8.2 8.2 21.5 8.2 29.7 0 8.2-8.2 8.2-21.5 0-29.7zM208 352c-79.5 0-144-64.5-144-144s64.5-144 144-144 144 64.5 144 144-64.5 144-144 144z"/></svg>') no-repeat 95% center;
+    background-size: 20px;
+}
