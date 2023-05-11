@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.btn1 {
+.addbtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@
   margin: 10px;
 }
 
-.btn1 .icon {
+.addbtn .icon {
   position: absolute;
   right: 8px;
   top: 0;
@@ -34,7 +34,7 @@
   transition: transform 0.2s ease;
 }
 
-.btn1 .label {
+.addbtn .label {
   flex: 1;
   /* Takes up remaining space */
   text-align: center;

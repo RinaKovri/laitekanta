@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AddingForm from './AddingForm';
-import './addButton.css';
+import AddingForm from '../AddButton/AddingForm';
+import './archiveButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxArchive } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,7 @@ const ArchiveButton = () => {
       {showForm ? (
         <AddingForm />
       ) : (
-        <button onClick={handleButtonClick} className='btn1'>
+        <button onClick={handleButtonClick} className='archbtn'>
           <span className="label">Arkistoi laite</span>
           <span className="icon">
             <FontAwesomeIcon icon={faBoxArchive} />

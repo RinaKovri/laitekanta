@@ -16,7 +16,7 @@ const AddButton = () => {
       {showForm ? (
         <AddingForm />
       ) : (
-        <button onClick={handleButtonClick} className='btn1'>
+        <button onClick={handleButtonClick} className='addbtn'>
           <span className="label">Lisää laite</span>
           <span className="icon">
             <FontAwesomeIcon icon={faPlus} />

@@ -1,9 +1,9 @@
 import './App.css';
 import logo from './varialogo.png';
-import LoginButton from './components/loginButton';
-import Searching from './components/searching';
-import AddButton from './components/addButton';
-import ArchiveButton from './components/archiveButton';
+import LoginButton from './components/Login/loginButton';
+import Searching from './components/Searching/searching';
+import AddButton from './components/AddButton/addButton';
+import ArchiveButton from './components/ArchiveButton/archiveButton';
 
 
 function App() {
