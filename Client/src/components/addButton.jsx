@@ -12,18 +12,18 @@ const AddButton = () => {
   };
 
   return (
-    <div className="container">
+    <form className="container1">
       {showForm ? (
         <AddingForm />
       ) : (
-        <button onClick={handleButtonClick} className='btn'>
+        <button onClick={handleButtonClick} className='btn1'>
           <span className="label">Lisää laite</span>
           <span className="icon">
             <FontAwesomeIcon icon={faPlus} />
           </span>
         </button>
       )}
-    </div>
+    </form>
   )
 }
 

@@ -8,16 +8,15 @@ const Searching = ({
   filterTextChange
 }) => {
   return (
-    <form className='form'>
+    <div>
         <input 
-          type='text'
-          value={filterText} 
+          type='search'
+          // value={filterText} 
           placeholder="Hae laitetta"
-          onChange={(e) => filterTextChange(e.target.value)}
+          // onChange={(e) => filterTextChange(e.target.value)}
           className="search"
-          style={{height:'35px'}}
         />
-    </form>
+    </div>
   )
 }
 

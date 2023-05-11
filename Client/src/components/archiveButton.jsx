@@ -16,7 +16,7 @@ const ArchiveButton = () => {
       {showForm ? (
         <AddingForm />
       ) : (
-        <button onClick={handleButtonClick} className='btn'>
+        <button onClick={handleButtonClick} className='btn1'>
           <span className="label">Arkistoi laite</span>
           <span className="icon">
             <FontAwesomeIcon icon={faBoxArchive} />

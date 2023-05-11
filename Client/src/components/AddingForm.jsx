@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios';
+import './AddingForm.css';
 
-
-const AddingForm = () => {
+const AddingForm = ({ setShowFormState }) => {
 
     const [email, setEmail] = useState("");
     const [serialNumber, setSerialNumber] = useState("");
@@ -16,7 +16,7 @@ const AddingForm = () => {
         Axios.get("http://localhost:3001/api/get").then((response) => {
             setDeviceList(response.data)
         })
-
+        setShowForm(true); // update the showForm state variable
     }, [])
 
     const addDevice = () => {
@@ -65,10 +65,15 @@ const AddingForm = () => {
                         <label>Issuing Date</label>
                         <input type="date" name="issuingDate" onChange={(e) => { setIssuingDate(e.target.value) }} />
                         <label>Returning Date</label>
-                        <input type="date" name="issuingDate" onChange={(e) => { setReturningDate(e.target.value) }} />
-                        <button onClick={addDevice}>Lisää</button>
-                        <button onClick={() => setShowForm(false)}>Sulje</button>
-
+                        <input type="date" name="returningDate" onChange={(e) => { setReturningDate(e.target.value) }} />
+                        <button onClick={addDevice} className='button'>Lisää</button>
+                        <button onClick={() => setShowForm(false)} className='button'>Sulje</button>
+                    </div>
+                </div>
+            )}
+            {!showForm && (
+                <button onClick={() => setShowForm(true)}>Lisää laite</button>
+            )}
 
                         {deviceList.map((val) => {
                             return <div className='card'>
@@ -87,13 +92,8 @@ const AddingForm = () => {
                                 <button onClick={() => { updateDevice(val.email) }}>UPDATE</button>
                             </div>
                         })}
-                    </div>
-                </div>
-            )}
         </>
     )
 }
-
-
 
 export default AddingForm
