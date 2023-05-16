@@ -8,3 +8,19 @@
     font-weight: bold;
     border-radius: 10px;
 }
+
+.modal {
+    background-color: blue;
+}
+
+h2 {
+}
+
+.loginForm {
+    display: inline-grid;
+    justify-items: first baseline;
+}
+
+.submitbtn {
+    
+}
