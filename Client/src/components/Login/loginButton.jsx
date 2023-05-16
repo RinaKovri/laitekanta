@@ -50,32 +50,34 @@ const LoginButton = () => {
   return (
     <>
       <button onClick={handleOpenModal} className='logbtn'>Kirjaudu sisään</button>
-      <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-        <h2>Kirjaudu sisään</h2>
-        <form className='loginForm' onSubmit={(e) => { e.preventDefault(); checkCredentials(); }}>
-          <label htmlFor="username">Username:</label>
-          <input
-            name="username"
-            type="text"
-            autoComplete="username"
-            required
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            name="password"
-            autoComplete="current-password"
-            required
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className="invalid-feedback">{errorMessage}</div>
-          <button type="submit">Submit</button>
-        </form>
+      <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal} className='modal'>
+          <h2>Please enter username and password</h2>
+          <form className='loginForm' onSubmit={(e) => { e.preventDefault(); checkCredentials(); }}>
+            <label htmlFor="username">Username:</label>
+            <input
+              name="username"
+              type="text"
+              autoComplete="username"
+              required
+              id="username"
+              value={username}
+              style={{width: '200px', height: '30px'}}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              name="password"
+              autoComplete="current-password"
+              required
+              id="password"
+              type="password"
+              value={password}
+              style={{width: '200px', height: '30px'}}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="invalid-feedback">{errorMessage}</div>
+            <button type="submit" className='submitbtn'>Submit</button>
+          </form>
       </Modal>
     </>
   );

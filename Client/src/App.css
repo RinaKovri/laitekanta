@@ -1,27 +1,32 @@
 body {
- background-color: rgb(166, 188, 241);
+  background-color: rgb(166, 188, 241);
 }
 
 .logo {
   margin-left: 20px;
-  width: 150px;
-  height: 150px;
-  opacity: 0.9;
+  width: 280px;
+  height: 280px;
+  opacity: 0.7;
 }
+
 .login {
   margin-right: 20px;
   margin-top: 20px;
- text-align: right;
+  text-align: right;
 }
+
 h1 {
-  margin-top: 10px;
+  margin-top: -70px;
+  margin-bottom: 60px;
   text-align: center;
   color: white;
+  text-shadow: 2px 2px #5a5555;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 50px;
 }
+
 .inputs {
   display: grid;
   text-align: center;
-  justify-items: first baseline;
+  grid-gap: 20px;
 }
