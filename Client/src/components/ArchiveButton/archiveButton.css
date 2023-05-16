@@ -31,7 +31,6 @@
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    transition: transform 0.2s ease;
 }
 
 .archbtn .label {
