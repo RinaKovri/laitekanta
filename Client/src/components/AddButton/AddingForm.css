@@ -1,9 +1,39 @@
-.form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container2 {
+    position: relative;
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    width: 700px;
+    height: 700px;
+    background-color: rgb(21, 13, 88, 0.9);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+
+h2 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.labelName {
+    color: rgb(255, 255, 255);
+}
+.insideForm {
+    display: inline-grid;
+    grid-gap: 20px;
+}
 .button {
     display: flex;
     align-items: center;

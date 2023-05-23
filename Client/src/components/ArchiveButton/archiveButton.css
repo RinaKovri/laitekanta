@@ -6,24 +6,23 @@
 
 .archbtn {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Center aligns text */
-    width: 310px;
-    height: 35px;
-    border-radius: 10px;
-    background-color: white;
-    color: rgb(255, 140, 0);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 310px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(255, 140, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  /* position: relative; */
+  overflow: hidden;
+  margin: 10px;
 }
 
 .archbtn .icon {
-    position: absolute;
+    /* position: relative; */
     right: 8px;
     top: 0;
     height: 100%;
@@ -31,7 +30,6 @@
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    transition: transform 0.2s ease;
 }
 
 .archbtn .label {
