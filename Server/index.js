@@ -20,7 +20,6 @@ db.connect((err) => {
 });
 
 app.use(cors());
-//app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -35,6 +34,8 @@ app.post('/api/laitekanta', (req, res) => {
         if (results.length > 0) {
             // Credentials are valid
             return res.json({ isValid: true });
+            
+            
         } else {
             // Credentials are invalid
             return res.json({ isValid: false });
@@ -95,3 +96,7 @@ app.post('/api/laitekanta', (req, res) => {
 app.listen(3001, () => {
     console.log("express is running on port 3001");
 });
+
+
+
+

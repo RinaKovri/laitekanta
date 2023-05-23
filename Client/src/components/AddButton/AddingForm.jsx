@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './AddingForm.css'
 
 
@@ -14,7 +12,7 @@ const AddingForm = () => {
     const [deviceList, setDeviceList] = useState([]);
     const [newSerial, setNewSerial] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const [showForm, setShowForm] = useState(true);
+    const showForm = useState(true);
 
 
 
@@ -79,72 +77,50 @@ const AddingForm = () => {
             {showForm ? (
                 <div className='modal-overlay'>
                     <div className='modal-content'>
-                        <table>
-                            <th>Add device base</th>
-                            <tr>
-                                <td>
-                                    <label>Email:</label>
-                                    <input style={{ width: "150px", height: "20px" }} type="text" name="email" onChange={(e) => { setEmail(e.target.value) }} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Serial Number:</label>
-                                    <input style={{ width: "150px", height: "20px" }} type="text" name="serialNumber" onChange={(e) => { setSerialNumber(e.target.value) }} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Issuing Date</label>
-                                    <input style={{ width: "150px", height: "20px" }} type="date" name="issuingDate" onChange={(e) => { setIssuingDate(e.target.value) }} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Returning Date</label>
-                                    <input style={{ width: "150px", height: "20px" }} type="date" name="returningDate" onChange={(e) => { setReturningDate(e.target.value) }} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button onClick={addDevice} className='button'>Lisää</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button onClick={() => setShowForm(false)} className='button'>Sulje</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Search:</label>
-                                    <input style={{ width: "150px", height: "20px" }} type="text" onChange={handleSearchTermChange} />
 
-                                    {searchTerm !== "" && deviceList.filter(searchDevice).map((val) => {
+                        <h2>Add device base</h2>
+                        <div className='insideForm'>
+                            <label className='labelName'>Email:</label>
+                            <input style={{ width: "150px", height: "20px" }} type="text" name="email" onChange={(e) => { setEmail(e.target.value) }} />
 
-                                        const issuingDateFormatted = val.issuingDate ? new Date(val.issuingDate).toLocaleDateString('fi-FI') : '';
-                                        const returningDateFormatted = val.returningDate ? new Date(val.returningDate).toLocaleDateString('fi-FI') : '';
-                                        return (
-                                            <div className='card'>
-                                                <h1>EMAIL:{val.email}</h1>
-                                                <h3>SERIAL NUMBER: {val.serialNumber}</h3>
-                                                <h3>ISSUING DATE: {issuingDateFormatted}</h3>
-                                                <h3>RETURNING DATE: {returningDateFormatted}</h3>
+                            <label className='labelName'>Serial Number:</label>
+                            <input style={{ width: "150px", height: "20px" }} type="text" name="serialNumber" onChange={(e) => { setSerialNumber(e.target.value) }} />
 
-                                                <button onClick={() => {
-                                                    if (window.confirm(`Are you sure you want to delete the device with email ${val.email}?`)) {
-                                                        deleteDevice(val.email)
-                                                    }
-                                                }}>DELETE</button>
+                            <label className='labelName'>Issuing Date</label>
+                            <input style={{ width: "150px", height: "20px" }} type="date" name="issuingDate" onChange={(e) => { setIssuingDate(e.target.value) }} />
 
-                                                <input type="text" placeholder='update serial no' id="updateInput" onChange={(e) => { setNewSerial(e.target.value) }} />
-                                                <button onClick={() => { updateDevice(val.email) }}>UPDATE</button>
-                                            </div>
-                                        )
-                                    })}
-                                </td>
-                            </tr>
-                        </table>
+                            <label className='labelName'>Returning Date</label>
+                            <input style={{ width: "150px", height: "20px" }} type="date" name="returningDate" onChange={(e) => { setReturningDate(e.target.value) }} />
+                        </div>
+                        <button onClick={addDevice} className='button'>Lisää</button>
+
+                        <button onClick={() => !showForm} className='button'>Sulje</button>
+
+                        <label className='labelName'>Search:</label>
+                        <input style={{ width: "150px", height: "20px" }} type="text" onChange={handleSearchTermChange} />
+
+                        {searchTerm !== "" && deviceList.filter(searchDevice).map((val) => {
+
+                            const issuingDateFormatted = val.issuingDate ? new Date(val.issuingDate).toLocaleDateString('fi-FI') : '';
+                            const returningDateFormatted = val.returningDate ? new Date(val.returningDate).toLocaleDateString('fi-FI') : '';
+                            return (
+                                <div className='card'>
+                                    <h1>EMAIL:{val.email}</h1>
+                                    <h3>SERIAL NUMBER: {val.serialNumber}</h3>
+                                    <h3>ISSUING DATE: {issuingDateFormatted}</h3>
+                                    <h3>RETURNING DATE: {returningDateFormatted}</h3>
+
+                                    <button onClick={() => {
+                                        if (window.confirm(`Are you sure you want to delete the device with email ${val.email}?`)) {
+                                            deleteDevice(val.email)
+                                        }
+                                    }}>DELETE</button>
+
+                                    <input type="text" placeholder='update serial no' id="updateInput" onChange={(e) => { setNewSerial(e.target.value) }} />
+                                    <button onClick={() => { updateDevice(val.email) }}>UPDATE</button>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             ) : (

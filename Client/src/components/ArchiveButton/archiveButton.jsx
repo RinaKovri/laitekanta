@@ -13,16 +13,12 @@ const ArchiveButton = () => {
 
   return (
     <div className="container">
-      {showForm ? (
-        <AddingForm />
-      ) : (
         <button onClick={handleButtonClick} className='archbtn'>
           <span className="label">Arkistoi laite</span>
           <span className="icon">
             <FontAwesomeIcon icon={faBoxArchive} />
           </span>
         </button>
-      )}
     </div>
   )
 }
