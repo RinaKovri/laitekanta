@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios';
 import './AddingForm.css'
+import MainPage from '../mainPage';
 
 
 const AddingForm = () => {
-
     const [email, setEmail] = useState("");
     const [serialNumber, setSerialNumber] = useState("");
     const [issuingDate, setIssuingDate] = useState("");
@@ -12,65 +12,67 @@ const AddingForm = () => {
     const [deviceList, setDeviceList] = useState([]);
     const [newSerial, setNewSerial] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const showForm = useState(true);
-
-
-
+    const [showForm, setShowForm] = useState(true);
+  
     useEffect(() => {
-        Axios.get("http://localhost:3001/api/get").then((response) => {
-            setDeviceList(response.data)
-        })
-
-    }, [])
-
+      Axios.get("http://localhost:3001/api/get").then((response) => {
+        setDeviceList(response.data);
+      });
+    }, []);
+  
     const addDevice = () => {
-        Axios.post("http://localhost:3001/api/insert", {
-            email: email,
-            serialNumber: serialNumber,
-            issuingDate: issuingDate,
-            returningDate: returningDate,
-        });
-
-        setDeviceList([
-            ...deviceList, {
-                email: email,
-                serialNumber: serialNumber,
-                issuingDate: issuingDate,
-                returningDate: returningDate,
-            },
-        ])
-
+      Axios.post("http://localhost:3001/api/insert", {
+        email: email,
+        serialNumber: serialNumber,
+        issuingDate: issuingDate,
+        returningDate: returningDate,
+      });
+  
+      setDeviceList([
+        ...deviceList,
+        {
+          email: email,
+          serialNumber: serialNumber,
+          issuingDate: issuingDate,
+          returningDate: returningDate,
+        },
+      ]);
     };
-
+  
     const deleteDevice = (item) => {
-        Axios.delete(`http://localhost:3001/api/delete/${item}`).then(() => {
-            setDeviceList(deviceList.filter((val) => {
-                return val.email !== item;
-            }))
-        })
-    }
-
+      Axios.delete(`http://localhost:3001/api/delete/${item}`).then(() => {
+        setDeviceList(deviceList.filter((val) => {
+          return val.email !== item;
+        }));
+      });
+    };
+  
     const updateDevice = (item) => {
-        Axios.put("http://localhost:3001/api/update", {
-            email: item,
-            serialNumber: newSerial,
-        })
-        setNewSerial("")
-    }
-
+      Axios.put("http://localhost:3001/api/update", {
+        email: item,
+        serialNumber: newSerial,
+      });
+      setNewSerial("");
+    };
+  
     const handleSearchTermChange = (event) => {
-        setSearchTerm(event.target.value);
+      setSearchTerm(event.target.value);
+    };
+  
+    const searchDevice = (device) => {
+      if (
+        device.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        device.serialNumber.toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        return true;
+      }
+      return false;
     };
 
-    const searchDevice = (device) => {
-        if (
-            device.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            device.serialNumber.toLowerCase().includes(searchTerm.toLowerCase())
-        ) {
-            return true;
-        }
-        return false;
-    };
+    const handleCloseForm = () => {
+        setShowForm(false);
+      };
+    
 
     return (
         <form className="container2">
@@ -94,7 +96,7 @@ const AddingForm = () => {
                         </div>
                         <button onClick={addDevice} className='button'>Lisää</button>
 
-                        <button onClick={() => !showForm} className='button'>Sulje</button>
+                        <button onClick={handleCloseForm} className='button'>Sulje</button>
 
                         <label className='labelName'>Search:</label>
                         <input style={{ width: "150px", height: "20px" }} type="text" onChange={handleSearchTermChange} />

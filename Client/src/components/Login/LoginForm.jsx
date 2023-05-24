@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './loginButton.css';
 import Axios from 'axios';
 import MainPage from '../mainPage';
 import './loginButton.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const buttonRef = useRef(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                buttonRef.current.click();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
 
     const checkCredentials = () => {
@@ -19,16 +36,13 @@ const LoginForm = () => {
             .then((response) => {
                 const isValid = response.data.isValid;
                 if (isValid) {
-                    // Credentials are correct
-                    //   setErrorMessage('');
                     setIsLoggedIn(true);
+                    navigate('/main');
                 } else {
-                    // Credentials are incorrect
                     setErrorMessage('Invalid username or password');
                 }
             })
             .catch((error) => {
-                // Handle error
                 console.error(error);
                 setErrorMessage('Username or password are incorrect');
             });
@@ -36,16 +50,18 @@ const LoginForm = () => {
 
     const handleLogout = () => {
         setIsLoggedIn(false);
+        setUsername('');
+        setPassword('');
     };
 
 
     if (isLoggedIn) {
         return (
             <>
-                <MainPage />
                 <button onClick={handleLogout} className="logout">
                     Kirjaudu ulos
                 </button>
+                <MainPage />
             </>
         )
     }
@@ -70,7 +86,7 @@ const LoginForm = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <div className="invalid-feedback">{errorMessage}</div>
-                    <input type="button" className='loginbtn' onClick={checkCredentials} value='Login' />
+                    <input ref={buttonRef} type="button" className='loginbtn' onClick={checkCredentials} value='Login' />
                 </form>
             </div>
 
