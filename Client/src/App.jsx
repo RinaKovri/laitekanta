@@ -1,24 +1,27 @@
 import './App.css';
 import logo from './varialogo.png';
 import LoginButton from './components/loginButton';
-import Searching from './components/searching';
 import AddButton from './components/addButton';
 import ArchiveButton from './components/archiveButton';
-import AddingForm from './components/AddingForm';
+import DeviceList from './components/DeviceList';
 
 function App() {
   return (
-    <div className="App">
-       <LoginButton />
-      <img src={logo} alt="varialogo"></img>
+<div>
+    <div className='login'>
+    <LoginButton />
+  </div>
+    <div className="form">
+      <img src={logo} alt="varialogo" className='logo'></img>
       <h1>LAITEKANTA</h1>
-      <Searching />
-      <AddButton />
-      <ArchiveButton />
-      <AddingForm />
+      <div className='inputs'>
+        <DeviceList />
+        <AddButton />
+        <ArchiveButton />
+      </div>
 
 
-    </div>
+    </div></div>
   );
 }
 

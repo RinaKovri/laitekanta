@@ -29,6 +29,26 @@ app.get("/api/get", (req, res)=> {
         res.send(result);
     });
 });
+app.post('/api/laitekanta', (req, res) => {
+    const { username, password } = req.body;
+    const usersql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    db.query(usersql, [username, password], (error, results) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'An error occurred' });
+        }
+        if (results.length > 0) {
+            // Credentials are valid
+            return res.json({ isValid: true });
+
+
+        } else {
+            // Credentials are invalid
+            return res.json({ isValid: false });
+        }
+    });
+    console.log(res.json)
+});
 
 app.post("/api/insert", (req, res) => {
 

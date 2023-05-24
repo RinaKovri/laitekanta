@@ -1,12 +1,22 @@
-import React from 'react'
+import './searching.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-
-
-const Searching = () => {
+const Searching = ({
+  filterText,
+  filterTextChange
+}) => {
   return (
-    <div>
-      <input></input>Hae laitetta
-    </div>
+    <form className='form'>
+        <input 
+          type='text'
+          value={filterText} 
+          placeholder="Hae laitetta"
+          onChange={(e) => filterTextChange(e.target.value)}
+          className="search"
+          style={{height:'35px'}}
+        />
+    </form>
   )
 }
 
