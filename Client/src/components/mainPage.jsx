@@ -4,7 +4,7 @@ import Searching from './Searching/searching';
 import AddButton from './AddButton/addButton';
 import ArchiveButton from './ArchiveButton/archiveButton';
 
-    function MainPage() {
+    function MainPage({ navigation, route }) {
         return (
             <>
                 <h1>LAITEKANTA</h1>

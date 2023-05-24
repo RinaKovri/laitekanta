@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios';
 import './AddingForm.css'
-import MainPage from '../mainPage';
+
 
 
 const AddingForm = () => {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AddingForm from '../AddButton/AddingForm';
 import './archiveButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxArchive } from '@fortawesome/free-solid-svg-icons';
